@@ -18,7 +18,7 @@ int main() {
     char *s = "Hello, World!";
     void *p = (void *)0xDEADBEEF; // Example pointer
     unsigned int u = 4294967295 ;  // Max value for a 32-bit unsigned int
-    int d = -2147483648;
+    int d = 2147483647;
     
     // Test cases for each specifier
     ft_printf("Character: %c\n", e);
