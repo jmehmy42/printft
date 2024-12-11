@@ -6,7 +6,7 @@
 /*   By: jmehmy < jmehmy@student.42lisboa.com >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:49:10 by jmehmy            #+#    #+#             */
-/*   Updated: 2024/12/09 15:59:39 by jmehmy           ###   ########.fr       */
+/*   Updated: 2024/12/11 15:26:43 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 int	ft_printf(const char *format, ...);
 int	ft_print_char(int c);
 int	ft_print_string(char *str);
-int	ft_putnbr(int nb);
+int	ft_putnbr(int nb, int put_space);
 int	ft_unsigned(unsigned int n);
 int	ft_hexadacimal(unsigned int num, char format);
-int	ft_pointer(void *ptr);
+int	ft_hex_conversion(uintptr_t num, char format);
+int	ft_pointer(void *ptr, char format);
 
 #endif

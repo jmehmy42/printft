@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pointer.c                                       :+:      :+:    :+:   */
+/*   ft_hex_conversion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmehmy < jmehmy@student.42lisboa.com >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 18:17:48 by jmehmy            #+#    #+#             */
-/*   Updated: 2024/12/11 15:27:25 by jmehmy           ###   ########.fr       */
+/*   Created: 2024/12/11 14:36:11 by jmehmy            #+#    #+#             */
+/*   Updated: 2024/12/11 15:22:26 by jmehmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_pointer(void *ptr, char format)
+int	ft_hex_conversion(uintptr_t num, char format)
 {
-	uintptr_t	num;
-	int			count;
+	int	count;
 
 	count = 0;
-	num = (uintptr_t)ptr;
-	if (num == 0)
-		count += write(1, "(nil)", 5);
+	if (num >= 16)
+	{
+		count += ft_hex_conversion(num / 16, format);
+		count += ft_hex_conversion(num % 16, format);
+	}
 	else
 	{
-		count += write(1, "0x", 2);
-		count += ft_hex_conversion(num, format);
+		if (num <= 9)
+			count += ft_print_char(num + '0');
+		else
+		{
+			if (format == 'x' || format == 'p')
+				count += ft_print_char(num - 10 + 'a');
+			else if (format == 'X')
+				count += ft_print_char(num - 10 + 'A');
+		}
 	}
 	return (count);
 }
